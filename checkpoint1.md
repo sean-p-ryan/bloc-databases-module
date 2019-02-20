@@ -27,63 +27,78 @@ A "table" is a complete collection of related data. The "columns" in the table l
 Text (strings), dates, and numeric values (or integers) can be used in a table.
 
 >What would be the result of each of these queries?
-
+```
 SELECT date, amount
 FROM payments;
+```
 
 This would return all records under the "date" and "amount" column heads in the table "payments." It would look like this:
-
+```
 Date          Amount
 5/1/2016     1500.00
 5/10/2016      37.00
 5/15/2016     124.93
 5/23/2016      54.72
-
+```
+```
 SELECT amount
 FROM payments
 WHERE amount > 500;
+```
 
 This would return only the payment dates and amounts for payments over 500 in the "payments" table. It would look like this:
-
-Date Amount
-5/1/2016 1500.00
-
+```
+Date        Amount
+5/1/2016   1500.00
+```
+```
 SELECT *
 FROM payments
 WHERE payee = 'Mega Foods';
+```
 
 This would return the complete records (all columns) for payments made to 'Mega Foods' stored in the "payments" table. It would look like this:
-
+```
 Date            Payee       Amount        Memo
 5/15/2016     Mega Foods    124.93      Groceries
+```
 
 >Given this users table, write SQL queries using the following criteria and include the output:
 
->The email and sign-up date for the user named DeAndre Data.
-
+The email and sign-up date for the user named DeAndre Data.
+```
 SELECT email, signup
 FROM users
 WHERE name = 'DeAndre Data';
+```
 
 OUTPUT:
-
+```
 email                 signup
 datad@comcast.net   2008-01-20
+```
 
 >The user ID for the user with email 'aleesia.algorithm@uw.edu'.
-
+```
 SELECT userid
 FROM users
 WHERE email = 'aleesia.algorithm@uw.edu';
+```
 
+OUTPUT:
+```
 userid
   1
+```
 
 >All the columns for the user ID equal to 4.
-
+```
 SELECT *
 FROM users
 WHERE userid = 4;
+```
 
+```
 userid          name               email          signup
    4       Brandy Boolean  bboolean@nasa.gov    1999-10-15
+```
