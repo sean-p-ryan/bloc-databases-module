@@ -99,7 +99,7 @@ orbiting body, if it is currently operating, and its approximate miles from Eart
 CREATE TABLE spacecrafts (
   id integer,
   name text,
-  yearlaunched year,
+  yearlaunched date,
   country text,
   mission text,
   orbiting body,
@@ -110,11 +110,11 @@ CREATE TABLE spacecrafts (
 Add three non-Earth-orbiting satellites to the table.
 
 INSERT INTO spacecrafts VALUES (1324, "Curiosity", 2011, "United States",
-"Went to Mars to take photos", "Mars", 1, "65000000");
+"Went to Mars to take photos", "Mars", 1, 65000000);
 
 INSERT INTO spacecrafts VALUES (11295, "Voyager", 1976, "United States",
 "Went as far as possible into space to check out space", "Orbited all of the planets",
-1, "500000000");
+1, 500000000);
 
 INSERT INTO spacecrafts VALUES (39402, "Space Rocker", 2043, "China",
 "Went to check out what Saturn's deal is", "Saturn", 0, 32000000);
