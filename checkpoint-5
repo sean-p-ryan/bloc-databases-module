@@ -1,0 +1,106 @@
+1) Write out a generic SELECT statement.
+
+SELECT hits, team
+FROM stats
+WHRE hits > 50
+AND team = 'Yankees';
+
+2) Create a fun way to remember the order of operations in a SELECT statement,
+such as a mnemonic.
+
+Order: SELECT, FROM, WHERE
+Mnemonic: Sassy Freakin' Witches
+
+3) Given this dogs table, write queries to select the following pieces of data:
+
+Intake teams typically guess the breed of shelter dogs, so the breed column may
+have multiple words (for example, "Labrador Collie mix").
+
+- Display the name, gender, and age of all dogs that are part Labrador.
+
+SELECT name, gender, age, breed
+FROM dogs
+WHERE breed MATCHES '%Labrador%';
+
+- Display the ids of all dogs that are under 1 year old.
+
+SELECT id, age
+FROM dogs
+WHERE age < 1;
+
+- Display the name and age of all dogs that are female and over 35lbs.
+
+SELECT name, age, gender, weight
+FROM dogs
+WHERE weight > 35;
+
+- Display all of the information about all dogs that are not Shepherd mixes.
+
+SELECT *
+FROM dogs
+WHERE breed NOT LIKE '%Shepherd%';
+AND breed NOT LIKE '%mix%'
+
+- Display the id, age, weight, and breed of all dogs that are either over
+60lbs or Great Danes.
+
+SELECT id, age, weight, breed,
+FROM dogs
+WHERE weight > 60
+OR breed = 'Great Dane';
+
+4) Given this cats table, what records are returned from these queries?
+
+- SELECT name, adoption_date FROM cats;
+This will return the names and adoption dates of all cats in the cats table.
+- SELECT name, age FROM cats;
+This will return the names and ages of all cats in the cats table.
+
+5) From the cats table, write queries to select the following pieces of data.
+
+- Display all the information about all of the available cats.
+
+SELECT *
+FROM cats;
+
+- Display the name and sex of all cats who are 7 years old.
+
+SELECT name, sex
+FROM cats
+WHERE age = 7;
+
+- Find all of the names of the cats, so you don’t choose duplicate names for new cats.
+
+SELECT name
+FROM cats;
+
+6) List each comparison operator and explain when you would use it. Include a real world example for each.
+
+< Less than, could be used when you want to return all homes under a certain price in a table of houses for sale
+> Greater than, could be used when you want to return all donuts about a certain IDS International Deliciousness Score in a table of donuts
+<= Less than or equal to, could be used when you want to return all of the goldfish that are <= 90 years old in a pet store inventory
+>= Greater than or equal to, used when you want to return all of the people in a table of baseball players who have 60 home runs or more
+<= Less than or equal to, used when you want to return all of the cats in a table of cats that are less than or equal to a billion years old
+!= Not equal to. Used when you want to return all of the children in a table of children whose ages are not equal to six
+<> ^^ same as above
+= Equal to, used when you want to return all of the rivers in the world with lengths equal to 7,316 miles
+LIKE Used when you want to see if a substring is in another string, example: "input LIKE 'cat'"
+BETWEEN Used when you want to see if a value falls between two other values
+IS DISTINCT FROM Used when you would normally use <>, but when one of the inputs could be null
+IS TRUE / IS FALSE Used in place of TRUE when the input could be null
+IS NULL Used when you want to see if the contents of a cell are null
+AND is used when you only want to return a row when both statements are true
+OR is used when you only want to return a row when at least one statement is true
+NOT used when you only want to return a row when a statement is not true
+
+7) From the cats table, what data is returned from these queries?
+
+- SELECT name FROM cats WHERE gender = ‘F’;
+This will return the name of all cats whose gender begins with the letter 'F'.
+
+- SELECT name FROM cats WHERE age <> 3;
+This will return the name of all cats whose age is not 3.
+
+- SELECT ID FROM cats WHERE name != ‘Mushi’ AND gender = ‘M’;
+This will return the ID of all cats whose name is not 'Mushi' and whose gender
+does not begin with the letter 'M'.
