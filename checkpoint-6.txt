@@ -1,0 +1,144 @@
+1) How do you find related data held in two separate data tables?
+
+This is done by using a join statement.
+
+2) Explain, in your own words, the difference between an INNER JOIN,
+LEFT OUTER JOIN, and RIGHT OUTER JOIN. Give a real-world example for each.
+
+INNER JOIN selects all rows from both tables that a match in the selected columns.
+If there are records in one table that do not have matches in the other, these records
+will not be shown.
+
+Example:
+
+  orders
+  customer_id | order_id | customer_name
+      12           452          'Jim'
+      42           948          'Mary'
+      31           125          'Steve'
+
+
+  order_details
+  order_id | items_purchased
+     452      'soap, paper towels'
+     125      'cereal, soap'
+
+  SELECT orders.customer_name, order_details.items_purchased
+    FROM orders
+    JOIN order_details
+    ON orders.order_id = order_details.order_id;
+
+    OUTPUT:
+
+    customer_name | items_purchased
+       'Jim'        'soap, paper towels'
+       'Steve'      'cereal, soap'
+
+In a LEFT OUTER JOIN, all rows from the first table mentioned in the SQL query is selected,
+regardless whether there is a matching row on the second table mentioned in the SQL query.
+
+EXAMPLE:
+
+  orders
+  customer_id | order_id | customer_name
+      12           452          'Jim'
+      42           948          'Mary'
+      31           125          'Steve'
+
+
+  order_details
+  order_id | items_purchased
+     452      'soap, paper towels'
+     125      'cereal, soap'
+
+  SELECT orders.customer_name, order_details.items_purchased
+    FROM orders
+    LEFT OUTER JOIN order_details
+    ON orders.order_id = order_details.order_id;
+
+  OUTPUT:
+
+    customer_name | items_purchased
+       'Jim'        'soap, paper towels'
+       'Mary'        null
+       'Steve'      'cereal, soap'
+
+In a RIGHT OUTER JOIN, all rows from the second table mentioned in the SQL query is selected,
+regardless whether there is a matching row on the second table mentioned in the SQL query.
+
+
+EXAMPLE:
+
+  orders
+  customer_id | order_id | customer_name
+      12           452          'Jim'
+      42           948          'Mary'
+      31           125          'Steve'
+
+
+  order_details
+  order_id | items_purchased
+      452      'soap, paper towels'
+      125      'cereal, soap'
+
+  SELECT orders.customer_name, order_details.items_purchased
+    FROM order_details
+    RIGHT OUTER JOIN orders
+    ON orders.order_id = order_details.order_id;
+
+  OUTPUT:
+
+    customer_name | items_purchased
+       'Jim'        'soap', 'paper towels'
+       'Steve'      'cereal', 'soap'
+       'Mary'        null
+
+  3) Define primary key and foreign key. Give a real-world example for each.
+
+  A primary key is a column (or set of columns) in a table with unique values
+  that only appear once in the table, and are used to uniquely identify each
+  record in the table. The foreign key is the same set of data and values in
+  another table that is used to link to tables together.
+
+  In our INNER JOIN example above, `order_id` was the primary key in the `orders`
+  table, and `order_id` in  the `order_details` table served as the foreign key.
+
+  4) Define aliasing.
+
+  Aliasing is the process of simplifying queries by using abbreviations for table
+  names.
+
+  5) Change this query to use aliasing:
+
+SELECT professor.name, compensation.salary,
+compensation.vacation_days FROM professor JOIN
+compensation ON professor.id =
+compensation.professor_id;
+
+SELECT p.name, c.salary
+FROM professor AS p
+JOIN compensation AS c
+ON professor.id = compensation.professor_id;
+
+  6) Why would you use the NATURAL keyword? Give a real world example.
+
+  NATURAL simplifies the USING keyword. Instead if entering a comma-separated
+  list of columns that two tables share, NATURAL JOIN automatically includes
+  all of the shared columns once in the output table.
+
+  EXAMPLE:
+
+  Every time someone signs up to view a webinar, they have to enter their email
+  address to sign in. To view the unique number of viewers, we want to create a
+  table with all information from an existing viewer_info table with the viewers table
+  that contains the email addresses. These two tables share the columns: name, age,
+  webinar_viewed and gender.
+
+  We cam generate the desired table with:
+
+  SELECT * FROM viewer_info NATURAL JOIN viewers;
+
+
+https://www.db-fiddle.com/f/sG1TKgR15GhH8cjbAwzjAm/0
+
+https://www.db-fiddle.com/f/jwTDJp6kiYqgqmKh1EDcxr/0
